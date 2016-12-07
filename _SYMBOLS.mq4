@@ -103,12 +103,12 @@ enum symbol
    LYD,   //	LYD - Libyan dinar
    MAD,   //	MAD - Moroccan dirham
    MDL,   //	MDL - Moldovan leu
-   MGA,   //   MGA - Malagasy ariary
+   MGA,   //  MGA - Malagasy ariary
    MKD,   //	MKD - Macedonian denar
    MMK,   //	MMK - Myanmar kyat
    MNT,   //	MNT - Mongolian tögrög
    MOP,   //	MOP - Macanese pataca
-   MRO,   //   MRO - Mauritanian ouguiya
+   MRO,   //  MRO - Mauritanian ouguiya
    MUR,   //	MUR - Mauritian rupee
    MVR,   //	MVR - Maldivian rufiyaa
    MWK,   //	MWK - Malawian kwacha
