@@ -10,7 +10,7 @@ Usage: MarketInfo(symbolname,ID)
 
 Examples: double ask = MarketInfo(Symbol(),MODE_ASK);
           double bid = MarketInfo(Symbol(),MODE_BID);
-          double spread= MarketInfo(Symbol(),13); 
+          double spread = MarketInfo(Symbol(),13); 
           
 ID,Value,Description
 	
