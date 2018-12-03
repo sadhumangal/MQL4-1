@@ -1,3 +1,8 @@
+// Functions:
+//- VLineCreate()
+//- VLineMove()
+//- VLineDelete()
+
 //+------------------------------------------------------------------+ 
 //| Create the vertical line                                         | 
 //+------------------------------------------------------------------+ 
@@ -50,3 +55,44 @@ bool VLineCreate(const long            chart_ID=0,        // chart's ID
    return(true); 
   } 
 //+------------------------------------------------------------------+ 
+//| Move the vertical line                                           | 
+//+------------------------------------------------------------------+ 
+bool VLineMove(const long   chart_ID=0,   // chart's ID 
+               const string name="VLine", // line name 
+               datetime     time=0)       // line time 
+  { 
+//--- if line time is not set, move the line to the last bar 
+   if(!time) 
+      time=TimeCurrent(); 
+//--- reset the error value 
+   ResetLastError(); 
+//--- move the vertical line 
+   if(!ObjectMove(chart_ID,name,0,time,0)) 
+     { 
+      Print(__FUNCTION__, 
+            ": failed to move the vertical line! Error code = ",GetLastError()); 
+      return(false); 
+     } 
+//--- successful execution 
+   return(true); 
+  } 
+//+------------------------------------------------------------------+ 
+//| Delete the vertical line                                         | 
+//+------------------------------------------------------------------+ 
+bool VLineDelete(const long   chart_ID=0,   // chart's ID 
+                 const string name="VLine") // line name 
+  { 
+//--- reset the error value 
+   ResetLastError(); 
+//--- delete the vertical line 
+   if(!ObjectDelete(chart_ID,name)) 
+     { 
+      Print(__FUNCTION__, 
+            ": failed to delete the vertical line! Error code = ",GetLastError()); 
+      return(false); 
+     } 
+//--- successful execution 
+   return(true); 
+  } 
+//+------------------------------------------------------------------+ 
+
