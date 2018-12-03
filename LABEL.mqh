@@ -1,4 +1,4 @@
-// Function:
+// Functions:
 //- LabelCreate()
 //- LabelMove()
 //- LabelChangeCorner()
