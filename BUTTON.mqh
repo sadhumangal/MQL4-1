@@ -1,3 +1,11 @@
+// Functions:
+//- ButtonCreate()
+//- ButtonMove()
+//- ButtonChangeSize()
+//- ButtonChangeCorner()
+//- ButtonTextChange()
+//- ButtonDelete()
+
 //+------------------------------------------------------------------+ 
 //| Create the button                                                | 
 //+------------------------------------------------------------------+ 
@@ -61,6 +69,114 @@ bool ButtonCreate(const long              chart_ID=0,               // chart's I
    ObjectSetInteger(chart_ID,name,OBJPROP_HIDDEN,hidden); 
 //--- set the priority for receiving the event of a mouse click in the chart 
    ObjectSetInteger(chart_ID,name,OBJPROP_ZORDER,z_order); 
+//--- successful execution 
+   return(true); 
+  } 
+//+------------------------------------------------------------------+ 
+//| Move the button                                                  | 
+//+------------------------------------------------------------------+ 
+bool ButtonMove(const long   chart_ID=0,    // chart's ID 
+                const string name="Button", // button name 
+                const int    x=0,           // X coordinate 
+                const int    y=0)           // Y coordinate 
+  { 
+//--- reset the error value 
+   ResetLastError(); 
+//--- move the button 
+   if(!ObjectSetInteger(chart_ID,name,OBJPROP_XDISTANCE,x)) 
+     { 
+      Print(__FUNCTION__, 
+            ": failed to move X coordinate of the button! Error code = ",GetLastError()); 
+      return(false); 
+     } 
+   if(!ObjectSetInteger(chart_ID,name,OBJPROP_YDISTANCE,y)) 
+     { 
+      Print(__FUNCTION__, 
+            ": failed to move Y coordinate of the button! Error code = ",GetLastError()); 
+      return(false); 
+     } 
+//--- successful execution 
+   return(true); 
+  } 
+//+------------------------------------------------------------------+ 
+//| Change button size                                               | 
+//+------------------------------------------------------------------+ 
+bool ButtonChangeSize(const long   chart_ID=0,    // chart's ID 
+                      const string name="Button", // button name 
+                      const int    width=50,      // button width 
+                      const int    height=18)     // button height 
+  { 
+//--- reset the error value 
+   ResetLastError(); 
+//--- change the button size 
+   if(!ObjectSetInteger(chart_ID,name,OBJPROP_XSIZE,width)) 
+     { 
+      Print(__FUNCTION__, 
+            ": failed to change the button width! Error code = ",GetLastError()); 
+      return(false); 
+     } 
+   if(!ObjectSetInteger(chart_ID,name,OBJPROP_YSIZE,height)) 
+     { 
+      Print(__FUNCTION__, 
+            ": failed to change the button height! Error code = ",GetLastError()); 
+      return(false); 
+     } 
+//--- successful execution 
+   return(true); 
+  } 
+//+------------------------------------------------------------------+ 
+//| Change corner of the chart for binding the button                | 
+//+------------------------------------------------------------------+ 
+bool ButtonChangeCorner(const long             chart_ID=0,               // chart's ID 
+                        const string           name="Button",            // button name 
+                        const ENUM_BASE_CORNER corner=CORNER_LEFT_UPPER) // chart corner for anchoring 
+  { 
+//--- reset the error value 
+   ResetLastError(); 
+//--- change anchor corner 
+   if(!ObjectSetInteger(chart_ID,name,OBJPROP_CORNER,corner)) 
+     { 
+      Print(__FUNCTION__, 
+            ": failed to change the anchor corner! Error code = ",GetLastError()); 
+      return(false); 
+     } 
+//--- successful execution 
+   return(true); 
+  } 
+//+------------------------------------------------------------------+ 
+//| Change button text                                               | 
+//+------------------------------------------------------------------+ 
+bool ButtonTextChange(const long   chart_ID=0,    // chart's ID 
+                      const string name="Button", // button name 
+                      const string text="Text")   // text 
+  { 
+//--- reset the error value 
+   ResetLastError(); 
+//--- change object text 
+   if(!ObjectSetString(chart_ID,name,OBJPROP_TEXT,text)) 
+     { 
+      Print(__FUNCTION__, 
+            ": failed to change the text! Error code = ",GetLastError()); 
+      return(false); 
+     } 
+//--- successful execution 
+   return(true); 
+  } 
+//+------------------------------------------------------------------+ 
+//| Delete the button                                                | 
+//+------------------------------------------------------------------+ 
+bool ButtonDelete(const long   chart_ID=0,    // chart's ID 
+                  const string name="Button") // button name 
+  { 
+//--- reset the error value 
+   ResetLastError(); 
+//--- delete the button 
+   if(!ObjectDelete(chart_ID,name)) 
+     { 
+      Print(__FUNCTION__, 
+            ": failed to delete the button! Error code = ",GetLastError()); 
+      return(false); 
+     } 
 //--- successful execution 
    return(true); 
   } 
