@@ -1,3 +1,8 @@
+// Functions:
+//- HLineCreate()
+//- HLineMove()
+//- HLineDelete()
+
 //+------------------------------------------------------------------+ 
 //| Create the horizontal line                                       | 
 //+------------------------------------------------------------------+ 
@@ -43,6 +48,46 @@ bool HLineCreate(const long            chart_ID=0,        // chart's ID
    ObjectSetInteger(chart_ID,name,OBJPROP_HIDDEN,hidden); 
 //--- set the priority for receiving the event of a mouse click in the chart 
    ObjectSetInteger(chart_ID,name,OBJPROP_ZORDER,z_order); 
+//--- successful execution 
+   return(true); 
+  } 
+//+------------------------------------------------------------------+ 
+//| Move horizontal line                                             | 
+//+------------------------------------------------------------------+ 
+bool HLineMove(const long   chart_ID=0,   // chart's ID 
+               const string name="HLine", // line name 
+               double       price=0)      // line price 
+  { 
+//--- if the line price is not set, move it to the current Bid price level 
+   if(!price) 
+      price=SymbolInfoDouble(Symbol(),SYMBOL_BID); 
+//--- reset the error value 
+   ResetLastError(); 
+//--- move a horizontal line 
+   if(!ObjectMove(chart_ID,name,0,0,price)) 
+     { 
+      Print(__FUNCTION__, 
+            ": failed to move the horizontal line! Error code = ",GetLastError()); 
+      return(false); 
+     } 
+//--- successful execution 
+   return(true); 
+  } 
+//+------------------------------------------------------------------+ 
+//| Delete a horizontal line                                         | 
+//+------------------------------------------------------------------+ 
+bool HLineDelete(const long   chart_ID=0,   // chart's ID 
+                 const string name="HLine") // line name 
+  { 
+//--- reset the error value 
+   ResetLastError(); 
+//--- delete a horizontal line 
+   if(!ObjectDelete(chart_ID,name)) 
+     { 
+      Print(__FUNCTION__, 
+            ": failed to delete a horizontal line! Error code = ",GetLastError()); 
+      return(false); 
+     } 
 //--- successful execution 
    return(true); 
   } 
